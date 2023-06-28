@@ -1,0 +1,40 @@
+{
+  "name": "food_paradise",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "[ -z \"$HUSKY\" ] && husky install .husky || echo \"ignore husky\"",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings 0 --ext ts --ext tsx",
+    "format": "prettier --write '**/*.{ts,tsx}'",
+    "type-check": "tsc --pretty --noEmit"
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
+  "dependencies": {
+    "next": "13.4.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.3.2",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint": "^8.43.0",
+    "eslint-config-next": "13.4.7",
+    "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "typescript": "5.0.4",
+    "word-wrap": "^1.2.3"
+  }
+}
