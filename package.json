@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "postinstall": "[ -z \"$HUSKY\" ] && husky install .husky || echo \"ignore husky\"",
-    "dev": "next dev",
+    "prepare": "panda codegen",
+    "dev": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0 --ext ts --ext tsx",
@@ -23,6 +24,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@pandacss/dev": "^0.5.0",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
