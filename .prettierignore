@@ -3,3 +3,4 @@ node_modules
 yarn.lock
 public
 /src/__generated__
+.temp

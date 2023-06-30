@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "postinstall": "[ -z \"$HUSKY\" ] && husky install .husky || echo \"ignore husky\"",
-    "prepare": "panda codegen",
-    "dev": "rm -rf .next && next dev",
+    "prepare": "yarn compile-script && yarn run-script && panda codegen",
+    "dev": "rm -rf .next && yarn run-script && panda codegen && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0 --ext ts --ext tsx",
     "format": "prettier --write '**/*.{ts,tsx}'",
-    "type-check": "tsc --pretty --noEmit"
+    "type-check": "tsc --pretty --noEmit",
+    "compile-script": "yarn clean-script && tsc scripts/index.ts --outDir .temp",
+    "run-script": "node .temp/scripts/index.js",
+    "clean-script": "rm -rf ./.temp && rm -rf ./src/__generated__"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
@@ -25,6 +28,7 @@
   },
   "devDependencies": {
     "@pandacss/dev": "^0.5.0",
+    "@types/fs-extra": "^11.0.1",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
@@ -33,6 +37,7 @@
     "eslint": "^8.43.0",
     "eslint-config-next": "13.4.7",
     "eslint-config-prettier": "^8.8.0",
+    "fs-extra": "^11.1.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
