@@ -98,6 +98,19 @@ const tokens = defineTokens({
     nappa60: { value: '#856A66' },
     nappa10: { value: '#A18681' },
   },
+  sizes: {
+    '6xs': { value: '40px' },
+    '5xs': { value: '48px' },
+    '4xs': { value: '56px' },
+    '3xs': { value: '64px' },
+    '2xs': { value: '72px' },
+    xs: { value: '80px' },
+    sm: { value: '88px' },
+    md: { value: '96px' },
+    lg: { value: '104px' },
+    xl: { value: '112px' },
+    '2xl': { value: '120px' },
+  },
   spacing: {
     '6xs': { value: '2px' },
     '5xs': { value: '4px' },
@@ -135,6 +148,7 @@ const tokens = defineTokens({
   fontWeights: {
     fontRegular: { value: '400' },
     fontSemiBold: { value: '500' },
+    fontBold: { value: '700' },
   },
   radii: {
     xs: { value: '0.25rem' },
@@ -199,6 +213,38 @@ export default defineConfig({
         lg: '1024px',
         xl: '1280px',
         '2xl': '1536px',
+      },
+    },
+  },
+  utilities: {
+    extend: {
+      px: {
+        className: '',
+        values: 'spacing',
+        transform(value: string) {
+          return { paddingInline: value };
+        },
+      },
+      py: {
+        className: '',
+        values: 'spacing',
+        transform(value: string) {
+          return { paddingBlock: value };
+        },
+      },
+      shadows: {
+        className: '',
+        values: 'shadows',
+        transform(value: string) {
+          return { boxShadow: value };
+        },
+      },
+      fontWeight: {
+        className: '',
+        values: 'fontWeight',
+        transform(value: string) {
+          return { fontWeight: value };
+        },
       },
     },
   },
