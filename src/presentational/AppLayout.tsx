@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
 import { css } from '~/__generated__/panda-css/css';
+import { HStack } from '~/__generated__/panda-css/jsx';
+import { Heading } from './components/Typography';
 
 function AppLayout(props: PropsWithChildren) {
   return (
@@ -196,3 +198,23 @@ function NavigatorItemIcon(props: PropsWithChildren) {
   );
 }
 Navigator.ItemIcon = NavigatorItemIcon;
+
+type HeaderProps = {
+  title: string;
+};
+export function Header(props: HeaderProps) {
+  return (
+    <HStack
+      px="3xs"
+      shadows="sm"
+      className={css({
+        height: '5xs',
+        width: '100%',
+        backgroundColor: 'piccolo',
+        color: 'goten',
+      })}
+    >
+      <Heading size="3xl">{props.title}</Heading>
+    </HStack>
+  );
+}
