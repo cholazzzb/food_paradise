@@ -2,6 +2,7 @@ import {
   CurrencyCode,
   CurrencySymbol,
   Menu,
+  Merchant,
 } from '../../src/domains/menu/entity';
 import { generateCategories } from './menu';
 import { generateSellingTimes } from './selling-time';
@@ -22,16 +23,28 @@ export function generateRandomID(): string {
   });
 }
 
+export type MerchantTemplate = {
+  name: string;
+  lauk: string;
+  imageURL: string;
+};
 export function generateMerchantsMockData(
-  merchantTemplate: Array<{
-    name: string;
-    lauk: string;
-  }>,
-): Record<Menu['merchantID'], Menu> {
+  merchantTemplate: Array<MerchantTemplate>,
+): {
+  merchantsMockData: Record<Menu['merchantID'], Menu>;
+  merchantsListMockData: Array<Merchant>;
+} {
   const merchantsMockData: Record<Menu['merchantID'], Menu> = {};
+  const merchantsListMockData: Array<Merchant> = [];
 
   for (const template of merchantTemplate) {
     const merchantID = generateRandomID();
+    merchantsListMockData.push({
+      merchantID,
+      name: template.name,
+      imageURL: template.imageURL,
+    });
+
     const sellingTime = Array(2)
       .fill(null)
       .map(() => generateSellingTimes());
@@ -51,5 +64,5 @@ export function generateMerchantsMockData(
     };
     merchantsMockData[merchantID] = menu;
   }
-  return merchantsMockData;
+  return { merchantsMockData, merchantsListMockData };
 }

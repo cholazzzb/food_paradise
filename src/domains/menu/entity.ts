@@ -116,7 +116,7 @@ export type ModifierGroup = {
   modifiers: Array<Modifier>;
 };
 
-export type Item = {
+export type MenuItem = {
   id: string;
   name: string;
   nameTranslation?: NameTranslation;
@@ -148,7 +148,7 @@ export type Category = {
   nameTranslation?: NameTranslation;
   availableStatus: AvailableStatus;
   sellingTimeID?: string;
-  items: Array<Item>;
+  items: Array<MenuItem>;
 };
 
 export type Menu = {
@@ -157,4 +157,10 @@ export type Menu = {
   currency: Currency;
   sellingTimes: Array<SellingTime>;
   categories: Array<Category>;
+};
+
+export type Merchant = {
+  merchantID: string;
+  name: string;
+  imageURL: string;
 };

@@ -6,7 +6,7 @@ import {
 import { randomFromArray, shuffleArray } from '../../src/shared/random';
 import { generateRandomID } from './merchant';
 
-const categories = ['tanpa nasi', 'dengan nasi', 'tambah lalap'];
+const categories = ['Tanpa Nasi', 'Dengan Nasi', 'Tambah Lalap'];
 const spices = [
   'Bakar',
   'Goreng',
