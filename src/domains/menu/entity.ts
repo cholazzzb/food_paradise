@@ -99,10 +99,10 @@ export type AdvancedPricing = {
 export type Modifier = {
   id: string;
   name: string;
-  nameTranslation: NameTranslation;
+  nameTranslation?: NameTranslation;
   availableStatus: AvailableStatus;
   price: number;
-  barcode: string;
+  barcode?: string;
   advancedPricing?: AdvancedPricing;
 };
 
@@ -111,7 +111,7 @@ export type ModifierGroup = {
   name: string;
   nameTranslation?: NameTranslation;
   availableStatus: AvailableStatus;
-  selectionRangeMin: number;
+  selectionRangeMin: 0 | 1;
   selectionRangeMax: number;
   modifiers: Array<Modifier>;
 };
