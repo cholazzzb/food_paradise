@@ -21,7 +21,7 @@ export async function GET(request: Request): Promise<
 
   const menu = merchants[merchantID];
   if (!menu) {
-    NextResponse.json(
+    return NextResponse.json(
       { message: `merchantID ${merchantID} not found` },
       { status: 500 },
     );
