@@ -1,6 +1,7 @@
 import { outputFile } from 'fs-extra';
 import { join } from 'node:path';
 
+import collectAssets from './assets-collector';
 import { generateMerchantsMockData } from './mock-data-generator/merchant';
 
 function main() {
@@ -42,7 +43,7 @@ function main() {
         'https://raw.githubusercontent.com/cholazzzb/food_paradise/main/s3-dummy/merchants/goat.png',
     },
   ];
-  const { merchantsMockData, merchantsListMockData } =
+  const { merchantsMockData, merchantsListMockData, menuMap } =
     generateMerchantsMockData(merchantTemplates);
 
   outputFile(
@@ -55,18 +56,27 @@ function main() {
     JSON.stringify(merchantsListMockData, null, 2),
   );
 
+  outputFile(
+    join('src', '__generated__', 'mock-data', 'merchants-menu-item.json'),
+    JSON.stringify(menuMap, null, 2),
+  );
+
   const mockData = `
     import md from "./merchants.json";
     import mdl from "./merchants-list.json";
-    import { Menu, Merchant } from '~/domains/menu/entity';
+    import mdmi from "./merchants-menu-item.json"; 
+    import { Menu, Merchant, MenuItem } from '~/domains/menu/entity';
     
     export const merchants = md as Record<Menu["merchantID"], Menu>;
     export const merchantsList = mdl as Array<Merchant>;
+    export const merchantsMenuItem = mdmi as Record<MenuItem['id'], MenuItem>;
   `;
   outputFile(
     join('src', '__generated__', 'mock-data', 'merchants.ts'),
     mockData,
   );
+
+  collectAssets();
 }
 
 main();
