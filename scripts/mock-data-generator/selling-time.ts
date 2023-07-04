@@ -3,7 +3,7 @@ import {
   SellingTime,
   ServiceHours,
 } from '../../src/domains/menu/entity';
-import { generateRandomID } from './merchant';
+import { generateRandomID } from '../../src/shared/random';
 
 function generateServiceHours(): ServiceHours {
   return {

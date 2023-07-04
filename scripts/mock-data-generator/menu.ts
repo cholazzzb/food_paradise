@@ -4,8 +4,11 @@ import {
   ModifierGroup,
   SellingTime,
 } from '../../src/domains/menu/entity';
-import { randomFromArray, shuffleArray } from '../../src/shared/random';
-import { generateRandomID } from './merchant';
+import {
+  generateRandomID,
+  randomFromArray,
+  shuffleArray,
+} from '../../src/shared/random';
 
 const categories = ['Tanpa Nasi', 'Dengan Nasi', 'Tambah Lalap'];
 const spices = [
