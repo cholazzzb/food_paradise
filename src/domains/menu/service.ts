@@ -1,3 +1,4 @@
+import { type GetMenuItemRes } from './contract';
 import { Menu, Merchant } from './entity';
 
 export async function getMerchantsList(): Promise<{
@@ -14,4 +15,10 @@ export async function getMenuByMerchantID(
     headers: { 'Merchant-Id': merchantID },
   });
   return await data.json();
+}
+
+export async function getMenuItem(menuID: string): Promise<GetMenuItemRes> {
+  const res = await fetch(`/api/merchant/menu/${menuID}`);
+  const resData = await res.json();
+  return { menuItem: resData?.menuItem };
 }

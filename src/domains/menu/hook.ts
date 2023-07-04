@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { Menu, Merchant } from './entity';
-import { getMenuByMerchantID, getMerchantsList } from './service';
+import { Menu, MenuItem, Merchant } from './entity';
+import { getMenuByMerchantID, getMenuItem, getMerchantsList } from './service';
 
 enum Status {
-  Idle,
-  Loading,
-  Success,
-  Error,
+  Idle = 'Idle',
+  Loading = 'Loading',
+  Success = 'Success',
+  Error = 'Error',
 }
 export function useMerchantsList() {
   const [status, setStatus] = useState(Status.Loading);
@@ -75,4 +75,21 @@ export function useGroupMenu() {
   }, []);
 
   return { groupedMenu, selectedMerchant, status, createOnClickHandler };
+}
+
+export function useMenuItem(menuID: string) {
+  const [status, setStatus] = useState<Status>(Status.Idle);
+  const [menuItem, setMenuItem] = useState<MenuItem>();
+
+  useEffect(() => {
+    setStatus(Status.Loading);
+    getMenuItem(menuID)
+      .then((res) => {
+        setMenuItem(res.menuItem);
+        setStatus(Status.Success);
+      })
+      .catch(() => setStatus(Status.Error));
+  }, [menuID]);
+
+  return { menuItem, status, isError: status === Status.Error };
 }
