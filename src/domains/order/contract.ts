@@ -16,8 +16,8 @@ import {
 } from './entity';
 
 export type PostSubmitOrder = {
-  orderID?: string;
-  shortOrderNumber: string;
+  orderID: string;
+  shortOrderNumber?: string;
   merchantID: string;
   partnerMerchantID: string;
   paymentType: PaymentType;
