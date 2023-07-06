@@ -1,4 +1,9 @@
-import { defineConfig, defineGlobalStyles, defineTokens } from '@pandacss/dev';
+import {
+  defineConfig,
+  defineGlobalStyles,
+  defineKeyframes,
+  defineTokens,
+} from '@pandacss/dev';
 
 import { buttonRecipe } from '~/presentational/recipes/button';
 import {
@@ -186,6 +191,13 @@ const tokens = defineTokens({
   },
 });
 
+const keyframes = defineKeyframes({
+  skeleton: {
+    '0%': { backgroundColor: 'hsl(200, 20%, 80%)' },
+    '100%': { backgroundColor: 'hsl(200, 20%, 95%)' },
+  },
+});
+
 export default defineConfig({
   // Whether to use css reset
   preflight: true,
@@ -214,6 +226,7 @@ export default defineConfig({
         xl: '1280px',
         '2xl': '1536px',
       },
+      keyframes,
     },
   },
   utilities: {
