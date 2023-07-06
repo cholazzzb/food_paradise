@@ -1,3 +1,5 @@
+export type MerchantID = string;
+
 export enum PaymentType {
   CASH = 'CASH',
   CASHLESS = 'CASHLESS',
@@ -31,14 +33,12 @@ export type OrderItem = {
   price: number;
   tax: number;
   specifications: string;
-  modifiers: [
-    {
-      id: string;
-      price: number;
-      tax: number;
-      quantity: number;
-    },
-  ];
+  modifiers: Array<{
+    id: string;
+    price: number;
+    tax: number;
+    quantity: number;
+  }>;
 };
 
 // Mock
