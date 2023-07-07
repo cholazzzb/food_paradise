@@ -68,8 +68,11 @@ export default function Home() {
                   />
                 );
               }}
-              itemContent={(_idx, _grpIdx, menu) => (
-                <MenuItemCard menu={menu} />
+              itemContent={(_idx, grpIdx, menu) => (
+                <MenuItemCard
+                  merchantID={merchants[grpIdx].merchantID}
+                  menu={menu}
+                />
               )}
             />
           )}

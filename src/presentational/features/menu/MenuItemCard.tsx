@@ -6,13 +6,14 @@ import { MenuItem } from '~/domains/menu/entity';
 import { Caption, Heading } from '~/presentational/components/Typography';
 
 type MenuItemCardProps = {
+  merchantID: string;
   menu: MenuItem;
 };
 
 export default function MenuItemCard(props: MenuItemCardProps) {
   const imageUrl = (props.menu?.photos && props.menu.photos[0]) ?? '';
   return (
-    <Link href={`/menu/${props.menu.id}`}>
+    <Link href={`/merchant/${props.merchantID}/menu/${props.menu.id}`}>
       <div
         className={css({
           display: 'flex',
