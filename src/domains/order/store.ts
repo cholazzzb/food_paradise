@@ -20,8 +20,8 @@ export const useLocalOrderStore = create<LocalOrder>()(
       orders: {},
     }),
     {
-      name: 'localOrder',
-      storage: undefined,
+      version: 0,
+      name: 'local-order',
     },
   ),
 );
