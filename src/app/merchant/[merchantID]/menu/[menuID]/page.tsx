@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useCallback, useMemo, useState, type ChangeEvent } from 'react';
 
 import { IconsMinus, IconsPlus } from '~/__generated__/assetsSVG';
