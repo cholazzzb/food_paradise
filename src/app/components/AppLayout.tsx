@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 
 import { css } from '~/__generated__/panda-css/css';
 import { HStack } from '~/__generated__/panda-css/jsx';
-import { Heading } from './components/Typography';
+import { Heading } from './Typography';
 
 function AppLayout(props: PropsWithChildren) {
   return (

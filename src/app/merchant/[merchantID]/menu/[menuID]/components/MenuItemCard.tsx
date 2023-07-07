@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { css } from '~/__generated__/panda-css/css';
+import { Caption, Heading } from '~/app/components/Typography';
 import { MenuItem } from '~/domains/menu/entity';
-import { Caption, Heading } from '~/presentational/components/Typography';
 
 type MenuItemCardProps = {
   merchantID: string;

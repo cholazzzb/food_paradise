@@ -6,6 +6,9 @@ import { useCallback, useMemo, useState, type ChangeEvent } from 'react';
 
 import { IconsMinus, IconsPlus } from '~/__generated__/assetsSVG';
 import { HStack, VStack } from '~/__generated__/panda-css/jsx';
+import AppLayout from '~/app/components/AppLayout';
+import Button from '~/app/components/Button';
+import { Caption, Heading, Text } from '~/app/components/Typography';
 import {
   AvailableStatus,
   Modifier,
@@ -13,9 +16,6 @@ import {
 } from '~/domains/menu/entity';
 import { useMenuItem } from '~/domains/menu/hook';
 import { localOrderAction } from '~/domains/order/store';
-import AppLayout from '~/presentational/AppLayout';
-import Button from '~/presentational/components/Button';
-import { Caption, Heading, Text } from '~/presentational/components/Typography';
 import { generateRandomID } from '~/shared/random';
 
 export default function Page({

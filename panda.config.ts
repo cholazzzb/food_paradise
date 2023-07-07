@@ -5,12 +5,12 @@ import {
   defineTokens,
 } from '@pandacss/dev';
 
-import { buttonRecipe } from '~/presentational/recipes/button';
+import { buttonRecipe } from '~/app/recipes/button';
 import {
   captionRecipe,
   headingRecipe,
   textRecipe,
-} from '~/presentational/recipes/typography';
+} from '~/app/recipes/typography';
 
 const globalCss = defineGlobalStyles({
   html: {

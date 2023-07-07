@@ -1,5 +1,5 @@
 import { css } from '~/__generated__/panda-css/css';
-import { Heading } from '~/presentational/components/Typography';
+import { Heading } from '~/app/components/Typography';
 
 type CategoryGroupContentProps = {
   firstIndex: boolean;

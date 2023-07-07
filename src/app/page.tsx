@@ -4,12 +4,12 @@ import { GroupedVirtuoso, Virtuoso } from 'react-virtuoso';
 
 import { css } from '~/__generated__/panda-css/css';
 import { HStack, VStack } from '~/__generated__/panda-css/jsx';
+import AppLayout, { Header } from '~/app/components/AppLayout';
 import { useGroupMenu, useMerchantsList } from '~/domains/menu/hook';
-import AppLayout, { Header } from '~/presentational/AppLayout';
-import CategoryGroupContent from '~/presentational/features/menu/CategoryGroupContent';
-import CategoryGroupHeader from '~/presentational/features/menu/CategoryGroupHeader';
-import MenuItemCard from '~/presentational/features/menu/MenuItemCard';
-import MerchantItem from '~/presentational/features/menu/MerchantItem';
+import CategoryGroupContent from './merchant/[merchantID]/menu/[menuID]/components/CategoryGroupContent';
+import CategoryGroupHeader from './merchant/[merchantID]/menu/[menuID]/components/CategoryGroupHeader';
+import MenuItemCard from './merchant/[merchantID]/menu/[menuID]/components/MenuItemCard';
+import MerchantItem from './merchant/[merchantID]/menu/[menuID]/components/MerchantItem';
 
 export default function Home() {
   const { merchants } = useMerchantsList();
