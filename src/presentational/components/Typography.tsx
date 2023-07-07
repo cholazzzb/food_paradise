@@ -12,23 +12,35 @@ import {
 type HeadingProps = PropsWithChildren<Partial<HeadingVariant>> &
   DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
 export function Heading(props: HeadingProps) {
-  const { children, ...pandaProps } = props;
+  const { children, size, ...elementProps } = props;
 
-  return <h1 className={heading(pandaProps)}>{children}</h1>;
+  return (
+    <h1 className={heading({ size })} {...elementProps}>
+      {children}
+    </h1>
+  );
 }
 
 type TextProps = PropsWithChildren<Partial<TextVariant>> &
   DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
 export function Text(props: TextProps) {
-  const { children, ...pandaProps } = props;
+  const { children, ...elementProps } = props;
 
-  return <p className={text(pandaProps)}>{children}</p>;
+  return (
+    <p className={text()} {...elementProps}>
+      {children}
+    </p>
+  );
 }
 
 type CaptionProps = PropsWithChildren<Partial<CaptionVariant>> &
   DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
 export function Caption(props: CaptionProps) {
-  const { children, ...pandaProps } = props;
+  const { children, size, ...elementProps } = props;
 
-  return <p className={caption(pandaProps)}>{children}</p>;
+  return (
+    <p className={caption({ size })} {...elementProps}>
+      {children}
+    </p>
+  );
 }

@@ -21,8 +21,15 @@ export default function Button(props: Props) {
     leftIcon: _leftIcon,
     rightIcon: _rightIcon,
     children,
-    ...pandaProps
+    visual,
+    size,
+    shape,
+    ...elementProps
   } = props;
 
-  return <button className={button(pandaProps)}>{children}</button>;
+  return (
+    <button className={button({ visual, size, shape })} {...elementProps}>
+      {children}
+    </button>
+  );
 }
