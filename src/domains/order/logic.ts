@@ -1,11 +1,11 @@
-import { MerchantID, OrderItem } from './entity';
+import { LocalOrderItem, MerchantID, OrderItem } from './entity';
 import { LocalOrder } from './store';
 
 export function addOneItem(
   store: LocalOrder['orders'],
   params: {
     merchantID: MerchantID;
-    orderItem: OrderItem;
+    localOrderItem: LocalOrderItem;
   },
 ): LocalOrder['orders'] {
   const nextState = { ...store };
@@ -15,7 +15,7 @@ export function addOneItem(
       merchantID: params.merchantID,
       partnerMerchantID: params.merchantID,
       items: {
-        [params.orderItem.id]: [params.orderItem],
+        [params.localOrderItem.id]: [params.localOrderItem],
       },
       price: {
         subtotal: 1000,
@@ -31,11 +31,11 @@ export function addOneItem(
     return nextState;
   }
 
-  const orderItems = orderMenuItem.items[params.orderItem.id];
+  const orderItems = orderMenuItem.items[params.localOrderItem.id];
   if (!orderItems) {
-    orderMenuItem.items[params.orderItem.id] = [params.orderItem];
+    orderMenuItem.items[params.localOrderItem.id] = [params.localOrderItem];
   } else {
-    orderMenuItem.items[params.orderItem.id].push(params.orderItem);
+    orderMenuItem.items[params.localOrderItem.id].push(params.localOrderItem);
   }
   return nextState;
 }

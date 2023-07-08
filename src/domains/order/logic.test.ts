@@ -9,9 +9,11 @@ describe('test addOneItem', () => {
       {},
       {
         merchantID: '1',
-        orderItem: {
+        localOrderItem: {
           id: 'oi1',
           grabItemID: '1',
+          name: '1',
+          imageURL: '',
           quantity: 1,
           price: 1000,
           tax: 0,
@@ -30,6 +32,8 @@ describe('test addOneItem', () => {
             {
               id: 'oi1',
               grabItemID: '1',
+              name: '1',
+              imageURL: '',
               quantity: 1,
               price: 1000,
               tax: 0,
@@ -65,6 +69,8 @@ describe('test addOneItem', () => {
               {
                 id: 'oi1',
                 grabItemID: '1',
+                name: '1',
+                imageURL: '',
                 quantity: 1,
                 price: 1000,
                 tax: 0,
@@ -87,9 +93,11 @@ describe('test addOneItem', () => {
       },
       {
         merchantID: '1',
-        orderItem: {
+        localOrderItem: {
           id: 'oi2',
           grabItemID: '2',
+          name: '2',
+          imageURL: '',
           quantity: 1,
           price: 1000,
           tax: 0,
@@ -107,6 +115,8 @@ describe('test addOneItem', () => {
           oi1: [
             {
               id: 'oi1',
+              name: '1',
+              imageURL: '',
               grabItemID: '1',
               quantity: 1,
               price: 1000,
@@ -119,6 +129,8 @@ describe('test addOneItem', () => {
             {
               id: 'oi2',
               grabItemID: '2',
+              name: '2',
+              imageURL: '',
               quantity: 1,
               price: 1000,
               tax: 0,
@@ -154,6 +166,8 @@ describe('test addOneItem', () => {
               {
                 id: 'oi1',
                 grabItemID: '1',
+                name: '1',
+                imageURL: '',
                 quantity: 1,
                 price: 1000,
                 tax: 0,
@@ -176,9 +190,11 @@ describe('test addOneItem', () => {
       },
       {
         merchantID: '1',
-        orderItem: {
+        localOrderItem: {
           id: 'oi1',
           grabItemID: '1',
+          name: '1',
+          imageURL: '',
           quantity: 1,
           price: 1000,
           tax: 0,
@@ -197,6 +213,8 @@ describe('test addOneItem', () => {
             {
               id: 'oi1',
               grabItemID: '1',
+              name: '1',
+              imageURL: '',
               quantity: 1,
               price: 1000,
               tax: 0,
@@ -206,6 +224,8 @@ describe('test addOneItem', () => {
             {
               id: 'oi1',
               grabItemID: '1',
+              name: '1',
+              imageURL: '',
               quantity: 1,
               price: 1000,
               tax: 0,
@@ -243,6 +263,8 @@ describe('test removeOneItem', () => {
               {
                 id: 'oi1',
                 grabItemID: '1',
+                name: '1',
+                imageURL: '',
                 quantity: 1,
                 price: 1000,
                 tax: 0,
@@ -252,6 +274,8 @@ describe('test removeOneItem', () => {
               {
                 id: 'oi1',
                 grabItemID: '1',
+                name: '1',
+                imageURL: '',
                 quantity: 2,
                 price: 1000,
                 tax: 0,
@@ -288,6 +312,8 @@ describe('test removeOneItem', () => {
             {
               id: 'oi1',
               grabItemID: '1',
+              name: '1',
+              imageURL: '',
               quantity: 2,
               price: 1000,
               tax: 0,
@@ -321,6 +347,8 @@ describe('test removeOneItem', () => {
               {
                 id: 'oi1',
                 grabItemID: '1',
+                name: '1',
+                imageURL: '',
                 quantity: 1,
                 price: 1000,
                 tax: 0,
@@ -330,6 +358,8 @@ describe('test removeOneItem', () => {
               {
                 id: 'oi1',
                 grabItemID: '1',
+                name: '1',
+                imageURL: '',
                 quantity: 2,
                 price: 1000,
                 tax: 0,
@@ -366,6 +396,8 @@ describe('test removeOneItem', () => {
             {
               id: 'oi1',
               grabItemID: '1',
+              name: '1',
+              imageURL: '',
               quantity: 1,
               price: 1000,
               tax: 0,
