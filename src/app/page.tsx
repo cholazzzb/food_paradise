@@ -2,10 +2,13 @@
 
 import { GroupedVirtuoso, Virtuoso } from 'react-virtuoso';
 
+import Link from 'next/link';
 import { css } from '~/__generated__/panda-css/css';
 import { HStack, VStack } from '~/__generated__/panda-css/jsx';
 import AppLayout, { Header } from '~/app/components/AppLayout';
 import { useGroupMenu, useMerchantsList } from '~/domains/menu/hook';
+import Button from './components/Button';
+import { Caption } from './components/Typography';
 import CategoryGroupContent from './merchant/[merchantID]/menu/[menuID]/components/CategoryGroupContent';
 import CategoryGroupHeader from './merchant/[merchantID]/menu/[menuID]/components/CategoryGroupHeader';
 import MenuItemCard from './merchant/[merchantID]/menu/[menuID]/components/MenuItemCard';
@@ -76,6 +79,17 @@ export default function Home() {
               )}
             />
           )}
+        </HStack>
+        <HStack
+          width="100%"
+          paddingBlock="3xs"
+          paddingInline="xs"
+          justifyContent="space-between"
+        >
+          <Caption>TotalPrice</Caption>
+          <Link href="/order/basket">
+            <Button>Basket</Button>
+          </Link>
         </HStack>
       </VStack>
     </AppLayout>
