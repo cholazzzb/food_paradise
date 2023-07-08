@@ -104,6 +104,7 @@ const tokens = defineTokens({
     nappa10: { value: '#A18681' },
   },
   sizes: {
+    '7xs': { value: '32px' },
     '6xs': { value: '40px' },
     '5xs': { value: '48px' },
     '4xs': { value: '56px' },

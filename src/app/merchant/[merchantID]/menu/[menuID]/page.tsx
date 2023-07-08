@@ -46,11 +46,11 @@ export default function Page({
     modifier: {
       multiSelect: new Map<
         Modifier['id'],
-        { id: Modifier['id']; price: number }
+        { id: Modifier['id']; name: string; price: number }
       >(),
       singleSelect: new Map<
         ModifierGroup['id'],
-        { id: Modifier['id']; price: number }
+        { id: Modifier['id']; name: string; price: number }
       >(),
     },
   });
@@ -67,10 +67,13 @@ export default function Page({
             {
               setSelectedMenu((prev) => {
                 const nextState = { ...prev };
+                nextState.modifier.singleSelect = new Map();
                 nextState.modifier.singleSelect.set(modGrpId, {
                   id: mod.id,
+                  name: mod.name,
                   price: mod.price,
                 });
+
                 return nextState;
               });
             }
@@ -82,6 +85,7 @@ export default function Page({
                   const nextState = { ...prev };
                   nextState.modifier.multiSelect.set(mod.id, {
                     id: mod.id,
+                    name: mod.name,
                     price: mod.price,
                   });
                   return nextState;
@@ -103,10 +107,15 @@ export default function Page({
   );
 
   const onDecreaseQuantity = useCallback(() => {
-    setSelectedMenu((prev) => ({
-      ...prev,
-      quantity: prev.quantity - 1,
-    }));
+    setSelectedMenu((prev) => {
+      if (prev.quantity === 0) {
+        return prev;
+      }
+      return {
+        ...prev,
+        quantity: prev.quantity - 1,
+      };
+    });
   }, []);
 
   const onIncreaseQuantity = useCallback(() => {
@@ -126,9 +135,11 @@ export default function Page({
   const onSave = useCallback(() => {
     localOrderAction.addOrderItem({
       merchantID,
-      orderItem: {
+      localOrderItem: {
         id: generateRandomID(),
         grabItemID: generateRandomID(),
+        name: menuItem?.name ?? '',
+        imageURL: menuItem?.photos ? menuItem?.photos[0] : '',
         quantity: selectedMenu.quantity,
         price: orderItem.price,
         tax: 0,
@@ -193,10 +204,13 @@ export default function Page({
                     mod.availableStatus === AvailableStatus.UNAVAILABLE;
 
                   const inputType = isRequired ? 'radio' : 'checkbox';
-                  const value = (() => {
+                  const checked = (() => {
                     switch (inputType) {
                       case 'radio': {
-                        return selectedMenu.modifier.singleSelect.has(mod.id);
+                        return (
+                          selectedMenu.modifier.singleSelect.get(modGrp.id)
+                            ?.id === mod.id
+                        );
                       }
 
                       case 'checkbox': {
@@ -204,6 +218,7 @@ export default function Page({
                       }
                     }
                   })();
+
                   const onClickModifiier = createToggleModifierHandler(
                     inputType,
                     modGrp.id,
@@ -218,7 +233,7 @@ export default function Page({
                     >
                       <input
                         type={inputType}
-                        value={`${value}`}
+                        checked={checked}
                         disabled={disabled}
                         onChange={onClickModifiier}
                       />
@@ -242,7 +257,9 @@ export default function Page({
           <Text>{selectedMenu.quantity}</Text>
           <IconsPlus onClick={onIncreaseQuantity} />
         </HStack>
-        <Button onClick={onSave}>Add Item</Button>
+        <Button onClick={onSave} disabled={selectedMenu.quantity <= 0}>
+          Add Item
+        </Button>
       </HStack>
     </AppLayout>
   );

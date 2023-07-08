@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { MerchantID, OrderItem, Price } from './entity';
+import { LocalOrderItem, MerchantID, OrderItem, Price } from './entity';
 import { addOneItem, removeOneItem } from './logic';
 
 export type OrderMenuItem = {
   merchantID: MerchantID;
   partnerMerchantID: MerchantID;
-  items: Record<OrderItem['id'], Array<OrderItem>>;
+  items: Record<OrderItem['id'], Array<LocalOrderItem>>;
   price: Price;
 };
 export type LocalOrder = {
@@ -26,9 +26,29 @@ export const useLocalOrderStore = create<LocalOrder>()(
   ),
 );
 
+export function useAllLocalOrders() {
+  return useLocalOrderStore((localOrderStore) => {
+    const result: Array<LocalOrderItem & { merchantID: string; idx: number }> =
+      [];
+
+    for (const [merchantID, orderMenuItem] of Object.entries(
+      localOrderStore.orders,
+    )) {
+      const items: Array<LocalOrderItem & { merchantID: string; idx: number }> =
+        [];
+      Object.values(orderMenuItem.items).forEach((item, idx) => {
+        items.push(...item.map((it) => ({ ...it, merchantID, idx })));
+      });
+      result.push(...items);
+    }
+
+    return result;
+  });
+}
+
 function addOrderItem(params: {
   merchantID: MerchantID;
-  orderItem: OrderItem;
+  localOrderItem: LocalOrderItem;
 }) {
   useLocalOrderStore.setState((state) => {
     return { orders: addOneItem(state.orders, params) };
