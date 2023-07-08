@@ -41,6 +41,18 @@ export type OrderItem = {
   }>;
 };
 
+export type LocalOrderItem = {
+  name: string;
+  imageURL: string;
+  modifiers: Array<{
+    id: string;
+    name: string;
+    price: number;
+    tax: number;
+    quantity: number;
+  }>;
+} & Omit<OrderItem, 'modifiers'>;
+
 // Mock
 export type Campaign = {
   id: 'string';
